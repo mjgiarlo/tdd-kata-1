@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe StringCalculator do
-  subject { StringCalculator::StringCalculator.new }
+  subject { StringCalculator::Base.new }
   describe '#add' do
     it 'is defined' do
       expect(subject).to respond_to(:add)
