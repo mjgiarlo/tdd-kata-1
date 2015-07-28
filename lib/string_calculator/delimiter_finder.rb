@@ -7,18 +7,18 @@ module StringCalculator
     end
 
     def call
-      defaults.tap { |delims| delims.concat(extract_delimiters) }.compact
+      default_delimiters + extract_delimiters
     end
 
     private
 
-      def defaults
+      def default_delimiters
         ["\n", ","]
       end
 
       def extract_delimiters
         return [] unless string.match(%r{//.+\n})
-        # Yeah, this part sucks because I lacked regex fu to combine these exps
+        # Yeah, this part sucks because I lacked the regex fu to combine these
         if string.count('[') == 0
           string.match(%r{//\[?(.+?)\]?\n}).captures
         else

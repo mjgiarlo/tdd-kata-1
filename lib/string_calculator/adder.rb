@@ -3,8 +3,9 @@ module StringCalculator
     attr_accessor :addends
 
     def initialize(addends)
-      @addends = filter(addends)
-      validate
+      @addends = addends
+      filter!
+      validate!
     end
 
     def call
@@ -13,14 +14,22 @@ module StringCalculator
 
     private
 
-      def validate
-        negatives = addends.select { |addend| addend < 0 }
-        return if negatives.empty?
-        raise RuntimeError.new("negatives not allowed: #{negatives}")
+      def filter!
+        addends.reject! { |addend| addend > maximum }
       end
 
-      def filter(addends)
-        addends.reject { |addend| addend > 1000 }
+      def validate!
+        negatives = addends.select { |addend| addend < minimum }
+        return if negatives.empty?
+        raise RuntimeError, "negatives not allowed: #{negatives}"
+      end
+
+      def minimum
+        0
+      end
+
+      def maximum
+        1000
       end
   end
 end

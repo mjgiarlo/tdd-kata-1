@@ -10,11 +10,7 @@ module StringCalculator
     end
 
     def call
-      if block_given?
-        yield tokens
-      else
-        tokens
-      end
+      tokens.map(&:to_i)
     end
 
     private
