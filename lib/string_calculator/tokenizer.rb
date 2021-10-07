@@ -2,22 +2,22 @@ require_relative "./delimiter_finder"
 
 module StringCalculator
   class Tokenizer
-    attr_reader :string, :delimiters
-
-    def initialize(string, delimiter_finder_class = DelimiterFinder)
-      @string = string
-      @delimiters = delimiter_finder_class.new(string).call
+    def self.tokenize(string, delimiter_finder_class = DelimiterFinder)
+      new(string, delimiter_finder_class).tokenize
     end
 
-    def call
+    attr_reader :delimiters, :tokens
+
+    def initialize(string, delimiter_finder_class)
+      @delimiters = delimiter_finder_class.find(string)
+      @tokens = string.split(delimited_regex)
+    end
+
+    def tokenize
       tokens.map(&:to_i)
     end
 
     private
-
-      def tokens
-        string.split(delimited_regex)
-      end
 
       def delimited_regex
         Regexp.new(delimiters.map { |delim| Regexp.escape(delim) }.join('|'))
