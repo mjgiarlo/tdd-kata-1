@@ -1,6 +1,6 @@
-# TDD Kata Sample
+# TDD Kata 1
 
-A basic Ruby environment with some pre-written tests for [TDD Kata 1](http://osherove.com/tdd-kata-1). Used for the coding exercise within Infrastructure Team backend engineer interviews.
+My implementation of [TDD Kata 1](http://osherove.com/tdd-kata-1).
 
 # Run tests (via guard)
 
