@@ -1,4 +1,6 @@
-require_relative "./delimiter_finder"
+# frozen_string_literal: true
+
+require_relative './delimiter_finder'
 
 module StringCalculator
   class Tokenizer
@@ -19,8 +21,8 @@ module StringCalculator
 
     private
 
-      def delimited_regex
-        Regexp.new(delimiters.map { |delim| Regexp.escape(delim) }.join('|'))
-      end
+    def delimited_regex
+      Regexp.new(delimiters.map { |delim| Regexp.escape(delim) }.join('|'))
+    end
   end
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'string_calculator/adder'
 require 'string_calculator/tokenizer'
 require 'string_calculator/validator'
@@ -9,8 +11,8 @@ module StringCalculator
   class Base
     def add(string)
       Tokenizer.tokenize(string)
-        .then { |tokens| Validator.validate(tokens) }
-        .then { |addends| Adder.add(addends) }
+               .then { |tokens| Validator.validate(tokens) }
+               .then { |addends| Adder.add(addends) }
     end
   end
 end

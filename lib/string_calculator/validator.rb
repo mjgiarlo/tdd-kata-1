@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module StringCalculator
   class Validator
     def self.validate(tokens)
@@ -14,7 +16,7 @@ module StringCalculator
       tokens.partition { |token| token >= MINIMUM }.tap do |valid_tokens, invalid_tokens|
         return valid_tokens if invalid_tokens.empty?
 
-        raise RuntimeError, "negatives not allowed: #{invalid_tokens}"
+        raise "negatives not allowed: #{invalid_tokens}"
       end
     end
   end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module StringCalculator
   class DelimiterFinder
     def self.find(string)
@@ -16,16 +18,16 @@ module StringCalculator
 
     private
 
-      def default_delimiters
-        ["\n", ',']
-      end
+    def default_delimiters
+      ["\n", ',']
+    end
 
-      def extract_delimiters
-        string.scan(%r{
-          (?<=\[).+?(?=\])+ # Match one or more multi-character delimiters in brackets
-          |                 # ... or ...
-          (?<=//)[^\[]?     # Match a single non-bracket character after two forward slashes
-        }x)
-      end
+    def extract_delimiters
+      string.scan(%r{
+        (?<=\[).+?(?=\])+ # Match one or more multi-character delimiters in brackets
+        |                 # ... or ...
+        (?<=//)[^\[]?     # Match a single non-bracket character after two forward slashes
+      }x)
+    end
   end
 end
