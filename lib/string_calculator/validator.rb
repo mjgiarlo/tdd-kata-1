@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
-module StringCalculator
+class StringCalculator
+  # Validate a set of tokens
   class Validator
     def self.validate(tokens)
       new(tokens).validate

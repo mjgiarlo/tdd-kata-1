@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-describe StringCalculator::Base do
+describe StringCalculator do
   describe 'public API' do
     subject { described_class.new }
 

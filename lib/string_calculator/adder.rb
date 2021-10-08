@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
-module StringCalculator
+class StringCalculator
+  # Add a bunch of integers
   class Adder
     def self.add(addends)
       new(addends).add

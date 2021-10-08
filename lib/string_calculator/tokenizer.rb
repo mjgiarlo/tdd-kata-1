@@ -2,7 +2,8 @@
 
 require_relative './delimiter_finder'
 
-module StringCalculator
+class StringCalculator
+  # Tokenize a string
   class Tokenizer
     def self.tokenize(string, delimiter_finder_class = DelimiterFinder)
       new(string, delimiter_finder_class).tokenize

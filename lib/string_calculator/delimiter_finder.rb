@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
-module StringCalculator
+class StringCalculator
+  # Find delimiters in a string
   class DelimiterFinder
     def self.find(string)
       new(string).find
