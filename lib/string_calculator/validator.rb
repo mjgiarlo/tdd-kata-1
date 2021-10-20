@@ -14,10 +14,10 @@ class StringCalculator
     end
 
     def validate
-      tokens.partition { |token| token >= MINIMUM }.tap do |valid_tokens, invalid_tokens|
-        return valid_tokens if invalid_tokens.empty?
+      tokens.partition(&:negative?).tap do |invalid_tokens, valid_tokens|
+        invalid_tokens.any? { |_| raise "negatives not allowed: #{invalid_tokens}" }
 
-        raise "negatives not allowed: #{invalid_tokens}"
+        return valid_tokens
       end
     end
   end

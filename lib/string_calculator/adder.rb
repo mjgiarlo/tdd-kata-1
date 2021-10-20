@@ -10,11 +10,17 @@ class StringCalculator
     attr_accessor :addends
 
     def initialize(addends)
-      @addends = addends.reject { |addend| addend > MAXIMUM }
+      @addends = addends.reject { |addend| addend > maximum_allowed_addend }
     end
 
     def add
       addends.sum
+    end
+
+    private
+
+    def maximum_allowed_addend
+      1000
     end
   end
 end
