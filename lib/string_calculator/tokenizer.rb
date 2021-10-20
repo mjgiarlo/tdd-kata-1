@@ -5,14 +5,14 @@ require_relative './delimiter_finder'
 class StringCalculator
   # Tokenize a string
   class Tokenizer
-    def self.tokenize(string, delimiter_finder_class = DelimiterFinder)
-      new(string, delimiter_finder_class).tokenize
+    def self.tokenize(string)
+      new(string).tokenize
     end
 
     attr_reader :delimiters, :tokens
 
-    def initialize(string, delimiter_finder_class)
-      @delimiters = delimiter_finder_class.find(string)
+    def initialize(string)
+      @delimiters = DelimiterFinder.find(string)
       @tokens = string.split(delimited_regex)
     end
 
