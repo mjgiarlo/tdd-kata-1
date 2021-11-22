@@ -9,21 +9,24 @@ class StringCalculator
       new(string).tokenize
     end
 
-    attr_reader :delimiters, :tokens
+    attr_reader :string
 
     def initialize(string)
-      @delimiters = DelimiterFinder.find(string)
-      @tokens = string.split(delimited_regex)
+      @string = string
     end
 
     def tokenize
-      tokens.map(&:to_i)
+      string.split(delimited_regex).map(&:to_i)
     end
 
     private
 
+    def delimiters
+      DelimiterFinder.find(string)
+    end
+
     def delimited_regex
-      Regexp.new(delimiters.map { |delim| Regexp.escape(delim) }.join('|'))
+      /#{delimiters.map { |delim| Regexp.escape(delim) }.join('|')}/
     end
   end
 end

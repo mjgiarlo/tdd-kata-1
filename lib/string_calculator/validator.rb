@@ -3,21 +3,23 @@
 class StringCalculator
   # Validate a set of tokens
   class Validator
-    def self.validate(tokens)
-      new(tokens).validate
+    def self.validate(integers)
+      new(integers).validate
     end
 
-    attr_accessor :tokens
+    attr_accessor :integers
 
-    def initialize(tokens)
-      @tokens = tokens
+    def initialize(integers)
+      @integers = integers
     end
 
     def validate
-      tokens.partition(&:negative?).tap do |invalid_tokens, valid_tokens|
-        invalid_tokens.any? { |_| raise "negatives not allowed: #{invalid_tokens}" }
+      integers.partition(&:negative?).tap do |invalid_integers, valid_integers|
+        invalid_integers.any? do |_|
+          raise "negatives not allowed: #{invalid_integers}"
+        end
 
-        return valid_tokens
+        return valid_integers
       end
     end
   end
